@@ -1,0 +1,120 @@
+/*Header*/
+.header{
+color: #0c2461;
+margin-top: auto;
+}
+.logo{
+    font-weight: 700;
+    font-size: 35px;
+}
+.logo span{
+    color: #ff9f1a;
+}
+.dropdown{
+    margin-top: 16px;
+}
+/*Navebar*/
+.navbar .navbar-nav .nave-link :hover{
+    color: #fff;
+}
+.navbar{
+background-color: #0c2461;
+font-weight: 600;
+color: rgb(230, 234, 238);
+}
+.navnavbar-nav{
+    margin-left: 10px;
+    color: #fff;
+}
+.navbar-nav li a{
+    color: #fff;
+}
+.navbar-nav li a:hover{
+    color: rgb(105, 96, 96);
+}
+.admin{
+    margin-left: 20px;
+    
+}
+.admin a{
+    text-decoration: none;
+    color: #fff;
+}
+.admin :hover{
+    color:rgb(105, 96, 96) ;
+}
+/*Banner*/
+.banner {
+    background-image: url(../image/bandorban1.jpeg);
+    background-size: cover;
+    background-position: center;
+    min-height:60vh;
+}
+.banner text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*Top Header*/
+.top{
+   background-color: #861919;
+   
+}
+.home{
+    margin-top: 12px;
+    color: #fff;
+}
+.sign{
+    margin-top: 12px;
+    color: #fff;
+}
+/*Footer*/
+.footer{
+    background-color: #0c2461;
+}
+.copyright{
+    color: rgb(190, 173, 173);
+}
+.social a{
+    color: #fff;
+    margin: 5px;
+    margin-top: 30px !important;
+    font-size: 25px;
+
+}
+.social a:hover{
+    color:rgb(161, 134, 128);
+}
+.btn{
+    background-color: #0c2461;
+    color: #fff;
+}
+.btn:hover{
+    color: rgba(207, 207, 196, 0.589);
+    background-color: #031238;
+}
+.about{
+    margin: 30px;
+}
+/*Package*/
+.package-list .btn{
+    margin-top: 10px;
+}
+.banner-package{
+    background-image: url(../image/Kaptai.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height:60vh;
+}
+/*Package End*/
+/*banner about*/
+.banner-about{
+    background-image: url(../image/tanguar.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh;
+}
+/*banner about End*/
+# privacy-policy{
+    margin-bottom: 20px;
+}
