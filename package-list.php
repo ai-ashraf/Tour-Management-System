@@ -1,7 +1,7 @@
 <?php include_once("./header.php");?>
 <?php
 include("./db/connect-db.php");
- $sql="SELECT * FROM package";
+ $sql="SELECT * FROM package ORDER BY package_id DESC";
 $rs = mysqli_Query($conn,$sql);
         $mysqli_num_rows = mysqli_num_rows($rs);
 ?>
@@ -36,23 +36,34 @@ $rs = mysqli_Query($conn,$sql);
         $price=$data['price'];
         $image=$data['image'];
         $description=$data['description'];
+    
+        // if(isset($_POST['submit'])){
+        //     $imagename=$_FILES ['image']['name'];
+        //     $tmploc=$_FILES ['image']['tmp_name'];
+        //     $uploc="image/" .$imagename;
+        //     if($move_uploaded_file($tmploc,$uploc)){
+        //         echo "success";
+        //     }
+        // }
+        
+        
         ?>
         <div class=" row mb-5">
             
             <div class="col-md-3">
-                <img src="<?php echo$image?>" class="img-fluid" alt="Responsive image">
+                <img src="./image/<?php echo$image?>" class="img-fluid" alt="Responsive image">
 
             </div>
             <div class="col-md-6">
                 <h4>Package Name: <?php echo $package_name?></h4>
-                        <h6>Package Type : <?php echo $type?></h6>
+                        <h6>Package Type : <?php echo $type?> </h6>
                         <p><b>Package Location :</b> <?php echo $location?></p>
                         <p><b>Date : </b><?php echo $start_date?> <b>- </b><?php echo $end_date?></p>
 
             </div>
             <div class="col-md-3">
                 <h5><?php echo $price?> Tk</h5>
-                        <a href="package-details.php" class="btn " role="button">Details</a>
+                        <a href="package-details.php?package_id=<?php echo $package_id?>"  class="btn " role="button">Details</a>
             </div>
         </div>
         <?php }?>

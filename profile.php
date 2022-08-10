@@ -77,10 +77,10 @@ $user_info= user_info();
      <!-- <form action="./registration-save.php" method="post"> -->
         
   <div class="form-group">
-     <h5>Name: <?php echo $user_info['first_name'];?> </h5>
-     <h5>Mobile Number : </h5>
-     <h5>Email address : </p>
-     <p>Password : </p>
+     <h5>Name: <?php echo $user_info['first_name'];?> <?php echo $user_info['last_name'];?></h5>
+     <h5>Mobile Number : <?php echo $user_info['mobile'];?></h5>
+     <h5>Email address : <?php echo $user_info['email'];?></p>
+     <p>Password : <?php echo $user_info['password'];?></p>
 
     
   </div>

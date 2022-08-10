@@ -31,14 +31,14 @@
         </div>
         <?php endif ?>
         <?php
-        if(isset($_POST['submit'])){
-            $filename=$_FILES ['image']['name'];
-            $tmploc=$_FILES ['image']['tmp_name'];
-            $uploc="image/" .$filename;
-            if($move_uploaded_file($tmploc,$uploc)){
-                echo "success";
-            }
-        }
+        // if(isset($_POST['submit'])){
+        //     $filename=$_FILES ['image']['name'];
+        //     $tmploc=$_FILES ['image']['tmp_name'];
+        //     $uploc="image/" .$filename;
+        //     if($move_uploaded_file($tmploc,$uploc)){
+        //         echo "success";
+        //     }
+        // }
         
         ?>
                  <div class="row justify-content-center">

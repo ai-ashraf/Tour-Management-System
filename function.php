@@ -11,3 +11,16 @@ function user_info(){
 
 }
 ?>
+<?php
+// function package_details(){
+//     global $conn;
+//     $package_id = $_SESSION['package_id'];
+    
+    
+//     $sql = " SELECT * FROM package WHERE package_id=$package_id";
+//     $rs = mysqli_query($conn,$sql);
+//     $data = mysqli_fetch_assoc($rs);
+//     return $data;
+
+// }
+?>
