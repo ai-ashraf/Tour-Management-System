@@ -13,9 +13,10 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         if($mysqli_num_rows){
             $data = mysqli_fetch_array($rs);
             $user_id = $data['user_id'];
+            // $first_name = $data['first_name'];
             $_SESSION['user_id']=$user_id;
             // $user_id = $data['user_id'];
-            // $_SESSION['user_id']=$user_id;
+            // $_SESSION['first_name']=$first_name;
             
              
             header('location:./package-list.php');
