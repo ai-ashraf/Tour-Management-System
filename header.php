@@ -100,7 +100,7 @@ if(session_status()==PHP_SESSION_NONE){
                 ?>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="fas fa-user me-2"></i><?php echo $_SESSION['user_id']; ?>
+                          <i class="fas fa-user me-2"></i><?php echo $_SESSION['first_name']; ?>
                       </a>
                       
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

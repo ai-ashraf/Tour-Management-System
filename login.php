@@ -13,10 +13,9 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         if($mysqli_num_rows){
             $data = mysqli_fetch_array($rs);
             $user_id = $data['user_id'];
-            // $first_name = $data['first_name'];
+            $first_name = $data['first_name'];
             $_SESSION['user_id']=$user_id;
-            // $user_id = $data['user_id'];
-            // $_SESSION['first_name']=$first_name;
+            $_SESSION['first_name']=$first_name;
             
              
             header('location:./package-list.php');
@@ -52,11 +51,11 @@ if(isset($_POST['email']) && isset($_POST['password'])){
      <form action="" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
   </div>
   <div class="form-group">
     <label for="Password">Password</label>
-    <input type="password" class="form-control mb-3" id="Password" name="password" placeholder="Password">
+    <input type="password" class="form-control mb-3" id="Password" name="password" placeholder="Password" required>
   </div>
   <button type="submit" class="btn btn-primary mb-5">Login</button>
  </form>
