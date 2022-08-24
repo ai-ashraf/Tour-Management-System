@@ -18,7 +18,9 @@ if(isset($_POST['email']) && isset($_POST['password'])){
             $_SESSION['first_name']=$first_name;
             
              
-            header('location:./package-list.php');
+            header('location:./index.php');
+        //    header(location:redirect()->back());
+            // header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
         else{
             

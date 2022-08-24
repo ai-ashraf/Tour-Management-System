@@ -45,7 +45,7 @@ $rs = mysqli_query($conn,$sql);
    <div class="row justify-content-center">
     <div class="col-lg-2 ">
     <div class="button mb-3 ">
-            <a href="booking.php" class="btn " role="button">Book Now</a>
+            <a href="booking.php?package_id=<?php echo $row['package_id'];?> " class="btn " role="button">Book Now</a>
         </div>
     </div>
    </div>

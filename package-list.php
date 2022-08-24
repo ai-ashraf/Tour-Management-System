@@ -36,17 +36,6 @@ $rs = mysqli_Query($conn,$sql);
         $price=$data['price'];
         $image=$data['image'];
         $description=$data['description'];
-    
-        // if(isset($_POST['submit'])){
-        //     $imagename=$_FILES ['image']['name'];
-        //     $tmploc=$_FILES ['image']['tmp_name'];
-        //     $uploc="image/" .$imagename;
-        //     if($move_uploaded_file($tmploc,$uploc)){
-        //         echo "success";
-        //     }
-        // }
-        
-        
         ?>
         <div class=" row mb-5">
             

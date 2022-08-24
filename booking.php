@@ -1,6 +1,12 @@
 <?php include_once("./header.php");?>
-<?php
+<!-- Package database table  -->
 
+
+
+<!-- Package database table end -->
+
+<?php
+include("./db/connect-db.php");
 if(session_status()==PHP_SESSION_NONE){
     session_start();
   }
@@ -9,9 +15,22 @@ if(!isset($_SESSION['user_id'])){
     header("Location:login.php");
 }
 else{
+    include("./function.php");
+    $user_info= user_info();
 
+    include("./db/connect-db.php");
 
+    $id = (int)$_GET['package_id'];
+    $sql="SELECT * FROM package WHERE package_id='$id' ";
+    $rs = mysqli_query($conn,$sql);
+    while($row= mysqli_fetch_array($rs)){
 
+    echo $row['package_name'];
+    echo "<br>";
+    echo $row['price'];
+    // exit();
+   }
+   
 
 ?>
 <!DOCTYPE html>
@@ -24,6 +43,22 @@ else{
     <title>Document</title>
 </head>
 <body>
+<!-- User details start -->
+<div class="container">
+    <div class="row  mt-5 mb-5">
+        <div class="col-md-6 ">
+            <h3>My Details</h3>   
+            <div class="form-group">
+                <h5>Name: <?php echo $user_info['first_name'];?> <?php echo $user_info['last_name'];?></h5>
+                <h5>Mobile Number : <?php echo $user_info['mobile'];?></h5>
+                <h5>Email address : <?php echo $user_info['email'];?></p>
+            </div>
+        </div>
+     </div>
+</div>
+<!-- User details End-->
+
+    <!-- Booking Form Start -->
     <div class="container">
         <div class="row mt-2 mb-5 justify-content-center">
             <div class="col-md-7">
@@ -32,12 +67,12 @@ else{
                     <form>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label >
-                            <input type="text" class="form-control" id="name"  name="name"  aria-describedby="name" required>
+                            <input type="text"value="<?php echo $user_info['first_name'];?> <?php echo $user_info['last_name'];?>" class="form-control" id="name"  name="name"  aria-describedby="name" required>
                             
                         </div>
                         <div class="mb-3">
                             <label for="mobile" class="form-label">Mobile</label>
-                            <input type="tel" class="form-control" id="mobile" name="mobile" aria-describedby="mobile" required>
+                            <input type="tel" value="<?php echo $user_info['mobile'];?>" class="form-control" id="mobile" name="mobile" aria-describedby="mobile" required>
                             
                         </div>
                         <div class="mb-3">
@@ -73,7 +108,7 @@ else{
             </div>
         </div>
     </div>
-<?php }?>
+<?php  }?>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 </body>
 </html>
