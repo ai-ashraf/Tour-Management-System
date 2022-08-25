@@ -1,3 +1,9 @@
+<?php
+include("../db/connect-db.php");
+ $sql="SELECT * FROM booking ORDER BY booking_id DESC";
+$rs = mysqli_Query($conn,$sql);
+        $mysqli_num_rows = mysqli_num_rows($rs);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,33 +120,58 @@
                         </div>
                     </div>
                 </div>
-
+      
                 <div class="row my-5">
                     <h3 class="fs-4 mb-3">Recent Bookings</h3>
                     <div class="col">
+                   
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" width="50">#</th>
                                     <th scope="col">Package</th>
                                     <th scope="col">Tourist Name</th>
+                                    <th scope="col">Person</th>
                                     <th scope="col">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+        while($data = mysqli_fetch_array($rs)){
+        $booking_id = $data['booking_id'];
+        $package_name=$data['package_name'];
+        $name=$data['name'];
+        
+        $amount=$data['amount'];
+        $end_date=$data['end_date'];
+        $price=$data['price'];
+        $total=$price * $amount;
+        $a=array($total);
+        
+        
+        ?>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Saint Martin</td>
-                                    <td>Jony Talukdar</td>
-                                    <td>10000 Tk</td>
+                                    <th scope="row"></th>
+                                    <td><?php echo $package_name;?></td>
+                                    <td><?php echo $name;?></td>
+                                    <td><?php echo $amount;?></td>
+                                    <td><?php echo $total;?></td>
                                 </tr>
-                                <tr>
+                                <?php } ?>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="4">Total Sell</th>
+                                        <td><?php echo array_sum($a);?></td>
+                                        
+                                    </tr>
+                                    </tfoot>
+                                <!-- <tr>
                                     <th scope="row">2</th>
                                     <td>Bandorban</td>
                                     <td>Kobir Hasan</td>
                                     <td>7500 Tk</td>
-                                </tr>
-                                <tr>
+                                </tr> -->
+                                <!-- <tr>
                                     <th scope="row">3</th>
                                     <td>Sada Pathor</td>
                                     <td>Jiniya</td>
@@ -199,11 +230,13 @@
                                     <td>Cox's Bazar</td>
                                     <td>Saikat</td>
                                     <td>8000 Tk</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
+                
 
             </div>
         </div>

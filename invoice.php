@@ -1,4 +1,20 @@
 <?php include_once("./header.php");?>
+<?php
+include("./db/connect-db.php");
+if(session_status()==PHP_SESSION_NONE){
+    session_start();
+  }
+  global $conn;
+  $userid = $_SESSION['user_id'];
+  
+  
+  $sql="SELECT * FROM booking WHERE user_id='$userid' ";
+  $rs = mysqli_query($conn,$sql);
+         while($row= mysqli_fetch_array($rs)){
+
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,46 +39,57 @@
             <p class="text-center" style="font-size: 30px;">Thank for your Booking</p>
             <div class="row">
               <ul class="list-unstyled">
-                <li class="text-black">A I Ashraf</li>
-                <li class="text-muted mt-1"><span class="text-black">Invoice</span> #TMS364848335</li>
-                <li class="text-black mt-1">August 28 2022</li>
+                <li class="text-black"><?php echo $row['name'];?></li>
+                <li class="text-muted mt-1"><span class="text-black">Invoice </span> <?php echo $row['booking_id'];?></li>
+                <li class="text-black mt-1"><span class="text-black">Tour-Date </span><?php echo $row['start_date'];?> To <?php echo $row['end_date'];?></li>
               </ul>
               <hr>
               <div class="col-xl-10">
-                <p>Saint-Martin</p>
+                <p><?php echo $row['package_name'];?></p>
               </div>
               <div class="col-xl-2">
-                <p class="float-end">9000 TK
-                </p>
+                <p class="float-end"><?php echo $row['price'];?> Tk </p>
+                
               </div>
               <hr>
             </div>
             <div class="row">
               <div class="col-xl-10">
-                <p>Vat</p>
+                <p>Mobile</p>
               </div>
               <div class="col-xl-2">
-                <p class="float-end">450.00 Tk
-                </p>
+                <p class="float-end"><?php echo $row['mobile'];?> </p>
+                
               </div>
               <hr>
             </div>
             <div class="row">
               <div class="col-xl-10">
-                <p>T shirt</p>
+                <p>Address</p>
               </div>
               <div class="col-xl-2">
-                <p class="float-end">160 Tk
-                </p>
+                <p class="float-end"><?php echo $row['address'];?></p>
+                
+              </div>
               </div>
               <hr style="border: 2px solid black;">
+              <div class="row">
+              <div class="col-xl-10">
+                <p>Person</p>
+              </div>
+              <div class="col-xl-2">
+                <p class="float-end"><?php echo $row['amount'];?></p>
+                
+              </div>
             </div>
+            <hr style="border: 2px solid black;">
             <div class="row text-black">
       
               <div class="col-xl-12">
-                <p class="float-end fw-bold">Total : 9610.00
+                <p class="float-end fw-bold">Total : <?php echo $row['price'] * $row['amount'];?> Tk
                 </p>
               </div>
+              
               <hr style="border: 2px solid black;">
             </div>
             <div class="text-center" style="margin-top: 90px;">
@@ -76,7 +103,8 @@
     </div>
 </div>
 </div>
-    
+<?php } ?>
+
 
 
 

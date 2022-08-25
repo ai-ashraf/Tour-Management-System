@@ -10,33 +10,17 @@ $user_info= user_info();
 <div class="banner-package mb-5"> </div>
 <!-- Tour History -->
 <div class="container">
-<?php
-      
-        // $first_name=($_SESSION['first_name']);
-
-        //     $sql="SELECT * FROM user WHERE first_name = $first_name";
-        //     $rs = mysqli_query($conn,$sql);
-            
-        // $data = mysqli_fetch_array($rs);
-        // $first_name = $data['first_name'];
-        // $last_name=$data['last_name'];
-        // $mobile=$data['mobile'];
-        // $email=$data['email'];
-        // $password=$data['password'];
-      
-        // echo $email;
-        
-      
-    
-      
-      
-    
-      
-      
-    
-  
-      
-?>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <div class="text-center" style="margin-top: 90px;">
+    <p>See Your Booked Package </p>
+              <a href="invoice.php"><u class=" btn text-info">Invoice</u></a>
+              
+            </div>
+    </div>
+  </div>
+</div>
 <table class="table table-success table-striped">
   <thead>
     <h3>My Tour History</h3>

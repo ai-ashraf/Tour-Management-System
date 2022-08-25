@@ -1,8 +1,6 @@
 <?php include_once("./header.php");?>
 <!-- Package database table  -->
 
-
-
 <!-- Package database table end -->
 
 <?php
@@ -14,23 +12,41 @@ if(session_status()==PHP_SESSION_NONE){
 if(!isset($_SESSION['user_id'])){ 
     header("Location:login.php");
 }
-else{
-    include("./function.php");
-    $user_info= user_info();
+
+include("./function.php");
+$user_info= user_info();
+include("./db/connect-db.php");
+$packageId = (int)$_GET['package_id'];
+$sql="SELECT * FROM package WHERE package_id='$packageId' ";
+$rs = mysqli_query($conn,$sql);
+
+       
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    // print_r($_POST);
+    // $user_info= user_info();
+    // echo $user_info['user_id'];
+    // echo $user_info['first_name'];
+    // echo $user_info['mobile'];
 
     include("./db/connect-db.php");
 
-    $id = (int)$_GET['package_id'];
-    $sql="SELECT * FROM package WHERE package_id='$id' ";
-    $rs = mysqli_query($conn,$sql);
-    while($row= mysqli_fetch_array($rs)){
+extract($_POST);
+$sql="insert into booking(package_id,package_name,price,start_date,end_date,user_id,name,mobile,address,amount) values('$package_id','$package_name','$price','$start_date','$end_date','$user_id','$name','$mobile','$address','$amount')";
+$r = mysqli_Query($conn,$sql);
+if($r){
+    
+    header('location:./invoice.php');
 
-    echo $row['package_name'];
-    echo "<br>";
-    echo $row['price'];
-    // exit();
+    }
+  else{
+   echo"Booking Failed";
+   header('location:./package-list.php?status=fail_create');
    }
-   
+
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -43,38 +59,30 @@ else{
     <title>Document</title>
 </head>
 <body>
-<!-- User details start -->
-<div class="container">
-    <div class="row  mt-5 mb-5">
-        <div class="col-md-6 ">
-            <h3>My Details</h3>   
-            <div class="form-group">
-                <h5>Name: <?php echo $user_info['first_name'];?> <?php echo $user_info['last_name'];?></h5>
-                <h5>Mobile Number : <?php echo $user_info['mobile'];?></h5>
-                <h5>Email address : <?php echo $user_info['email'];?></p>
-            </div>
-        </div>
-     </div>
-</div>
+<!-- User details start -->   
+<?php
+while($row= mysqli_fetch_array($rs)){
+?>
 <!-- User details End-->
 
     <!-- Booking Form Start -->
-    <div class="container">
+    <div class="container" style="height: 420px;">
         <div class="row mt-2 mb-5 justify-content-center">
             <div class="col-md-7">
                 <div class="card border-success">
                     <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label >
-                            <input type="text"value="<?php echo $user_info['first_name'];?> <?php echo $user_info['last_name'];?>" class="form-control" id="name"  name="name"  aria-describedby="name" required>
-                            
-                        </div>
-                        <div class="mb-3">
-                            <label for="mobile" class="form-label">Mobile</label>
-                            <input type="tel" value="<?php echo $user_info['mobile'];?>" class="form-control" id="mobile" name="mobile" aria-describedby="mobile" required>
-                            
-                        </div>
+                    <form action="" method="POST">
+                        <!-- package -->
+                        <input type="hidden" name="package_id" value="<?= $packageId?>" >
+                        <input type="hidden" name="package_name" value="<?= $row['package_name']?>" >
+                        <input type="hidden" name="price" value="<?= $row['price']?>" >
+                        <input type="hidden" name="start_date" value="<?= $row['start_date']?>" >
+                        <input type="hidden" name="end_date" value="<?= $row['end_date']?>" >
+                        <?php }?>
+                        <!-- User -->
+                        <input type="hidden" name="user_id" value="<?= $user_info['user_id']?>" >
+                        <input type="hidden" name="name" value="<?= $user_info['first_name']?> <?= $user_info['last_name']?>" >
+                        <input type="hidden" name="mobile" value="<?= $user_info['mobile']?>" >
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
                             <input type="text" class="form-control" id="address" name="address" required>
@@ -101,14 +109,17 @@ else{
                         
                         </div>
                         
-                        <a href="invoice.php" class="btn btn-success" role="button">Book</a>
+                        <!-- <a href="invoice.php" class="btn btn-success" role="button">Book</a> -->
+                    
+                        <button class="btn btn-success" role="button">Book</a>
+
+                    
                     </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<?php  }?>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 </body>
 </html>
