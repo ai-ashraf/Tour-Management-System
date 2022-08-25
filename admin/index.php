@@ -1,8 +1,6 @@
 <?php
-include("../db/connect-db.php");
- $sql="SELECT * FROM booking ORDER BY booking_id DESC";
-$rs = mysqli_Query($conn,$sql);
-        $mysqli_num_rows = mysqli_num_rows($rs);
+include_once("../db/connect-db.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +80,13 @@ $rs = mysqli_Query($conn,$sql);
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">7</h3>
+                            <?php
+                                
+                                $sql="SELECT * FROM package ";
+                                $rs = mysqli_Query($conn,$sql);
+                                $count = mysqli_num_rows($rs);
+                            ?>
+                                <h3 class="fs-2"><?php echo $count; ?></h3>
                                 <p class="fs-5">Packages</p>
                             </div>
                             <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -92,7 +96,13 @@ $rs = mysqli_Query($conn,$sql);
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">4</h3>
+                            <?php
+                                
+                                $sql="SELECT * FROM booking ";
+                                $rs = mysqli_Query($conn,$sql);
+                                $booking_count = mysqli_num_rows($rs);
+                            ?>
+                                <h3 class="fs-2"><?php echo $booking_count; ?></h3>
                                 <p class="fs-5">Booking</p>
                             </div>
                             <i
@@ -103,7 +113,13 @@ $rs = mysqli_Query($conn,$sql);
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">38</h3>
+                            <?php
+                                
+                                $sql="SELECT * FROM user ";
+                                $rs = mysqli_Query($conn,$sql);
+                                $user_count = mysqli_num_rows($rs);
+                            ?>
+                                <h3 class="fs-2"><?php echo $user_count; ?></h3>
                                 <p class="fs-5">Users</p>
                             </div>
                             <i class="fa-solid fa-user-group fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -122,7 +138,7 @@ $rs = mysqli_Query($conn,$sql);
                 </div>
       
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Recent Bookings</h3>
+                    <h3 class="fs-4 mb-3">Total Bookings</h3>
                     <div class="col">
                    
                         <table class="table bg-white rounded shadow-sm  table-hover">
@@ -137,6 +153,12 @@ $rs = mysqli_Query($conn,$sql);
                             </thead>
                             <tbody>
                             <?php
+                            
+                            
+                             $sql="SELECT * FROM booking ORDER BY booking_id DESC";
+                            $rs = mysqli_Query($conn,$sql);
+                                    $mysqli_num_rows = mysqli_num_rows($rs);
+                            
         while($data = mysqli_fetch_array($rs)){
         $booking_id = $data['booking_id'];
         $package_name=$data['package_name'];
