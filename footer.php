@@ -19,7 +19,7 @@
   </div>
 </div>
 <!--Footer End -->
-<script src="./js/review.js"></script>
+<!-- <script src="./js/review.js"></script> -->
 
   <script src="./js/bootstrap.bundle.min.js"></script>
   </body>

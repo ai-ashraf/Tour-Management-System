@@ -21,6 +21,7 @@ $user_info= user_info();
     </div>
   </div>
 </div>
+
 <table class="table table-success table-striped">
   <thead>
     <h3>My Tour History</h3>

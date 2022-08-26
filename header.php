@@ -37,7 +37,7 @@ if(session_status()==PHP_SESSION_NONE){
                 <a class="nav-link" href="package-list.php">Tour Package</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="privacy.php">Privacy Policy</a>
+                <a class="nav-link" href="review.php">Reviews</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact-us.php">Contact Us</a>
