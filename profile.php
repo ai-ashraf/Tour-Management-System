@@ -65,7 +65,7 @@ $user_info= user_info();
      <h5>Name: <?php echo $user_info['first_name'];?> <?php echo $user_info['last_name'];?></h5>
      <h5>Mobile Number : <?php echo $user_info['mobile'];?></h5>
      <h5>Email address : <?php echo $user_info['email'];?></p>
-     <p>Password : <?php echo $user_info['password'];?></p>
+     
 
     
   </div>

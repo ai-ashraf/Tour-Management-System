@@ -37,7 +37,7 @@
   <div class="card-header text-warning">
     <h3>Review</h3>
   </div>
-  <div class="card-body" style="height: 250px;">
+  <div class="card-body" style="height: 200px;">
     <h4 class="card-title"><?php echo $user_name?></h4>
     
     <h5 class="text-warning"><?php echo $user_rating?> <i class="fa-solid fa-star"></i></h5>

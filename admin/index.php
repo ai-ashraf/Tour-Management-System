@@ -28,7 +28,7 @@ include_once("../db/connect-db.php");
                 <a href="create.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-project-diagram me-2"></i>Create Packages</a>
                 <a href="all_package.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fa-solid fa-user-group"></i>See Package</a>
+                    <i class="fas fa-gift me-2"></i>See Package</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fa-solid fa-money-bill-1-wave me-2"></i>Payments</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -129,11 +129,18 @@ include_once("../db/connect-db.php");
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 class="fs-2">5</h3>
-                                <p class="fs-5">Enquiries</p>
+                            <?php
+                                
+                                $sql="SELECT * FROM review ";
+                                $rs = mysqli_Query($conn,$sql);
+                                $review_count = mysqli_num_rows($rs);
+                            ?>
+                                <h3 class="fs-2"><?php echo $review_count; ?></h3>
+                                <p class="fs-5">Reviews</p>
                             </div>
-                            <i class="fa-solid fa-question fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fa-solid fa-star fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
+                        
                     </div>
                 </div>
       
@@ -180,13 +187,15 @@ include_once("../db/connect-db.php");
                                     <td><?php echo $total;?></td>
                                 </tr>
                                 <?php } ?>
-                                <tfoot>
+                                <!-- <tfoot>
                                     <tr>
                                         <th colspan="4">Total Sell</th>
-                                        <td><?php echo array_sum($a);?></td>
+                                        <td>
+                                        
+                                        </td>
                                         
                                     </tr>
-                                    </tfoot>
+                                    </tfoot> -->
                                 <!-- <tr>
                                     <th scope="row">2</th>
                                     <td>Bandorban</td>

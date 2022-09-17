@@ -14,24 +14,24 @@ if(isset($_POST["rating_data"]))
 		// ':user_name'		=>	$_POST["user_name"],
 		':user_rating'		=>	$_POST["rating_data"],
 		':user_review'		=>	$_POST["user_review"],
-		':datetime'			=>	time()
+		// ':datetime'			=>	time()
 	);
-      $user_name = $_SESSION["first_name"];
-      $user_rating = $_POST["rating_data"];
-      $user_review = $_POST["user_review"];
+	   $user_name = $_SESSION["first_name"];
+	   $user_rating = $_POST["rating_data"];
+       $user_review = $_POST["user_review"];
+	//   die();
 
     // return 0;
 
 	$query = "
 	INSERT INTO review 
-	(user_name, user_rating, user_review, datetime) 
-	VALUES ('$user_name', '$user_rating', '$user_review', 'datetime')
-	";
+	(user_name, user_rating, user_review ) 
+	VALUES ('$user_name', '$user_rating', '$user_review' )";
 
 	// $statement = $connect->prepare($query);
 
 	// $statement->execute($data);
-    $rs = mysqli_Query($conn,$query);
+    $rs = mysqli_Query($conn , $query);
     $statement =$rs;
 
 	echo "Your Review & Rating Successfully Submitted";

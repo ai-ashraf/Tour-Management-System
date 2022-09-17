@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="coloumn-auto text-center text-white ">
-        <div class="social">
+        <div class="social mt-3">
           <a href="#"><i class='bx bxl-facebook-circle'></i></a>
           <a href="#"><i class='bx bxl-youtube' ></i></a>
           <a href="#"><i class='bx bxl-instagram' ></i></a>
